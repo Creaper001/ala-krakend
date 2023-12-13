@@ -4,9 +4,8 @@
     {{ range $idx, $route := $routes }}
       {{ if $idx }},{{ end }}
       {
-        "endpoint": "{{ $domain }}/{{ $route.endpoint }}",
+        "endpoint": "/{{ $domain }}/{{ $route.endpoint }}",
         "method": "{{ $route.method }}",
-        "encondig": "json",
         "input_headers": {{ include "input_headers.json" }},
         "backend": [
           {
