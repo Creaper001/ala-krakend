@@ -1,0 +1,29 @@
+{{- define "default_endpoints" -}}
+  {{- $domains := . -}}
+  {{- range $domain, $routes := $domains -}}
+    {{- range $idx, $route := $routes -}}
+      {{- if $idx -}},{{- end -}}
+      {
+        "endpoint": "/{{- $domain -}}/{{- $route -}}",
+        "method": "{{- template "method" $route -}}",
+        "input_headers": {{- include "input_headers.json" -}},
+        "backend": [
+          {
+            "url_pattern": "{{- $domain -}}/{{- $route -}}",
+            "method": "{{- template "method" $route -}}",
+            "extra_config": {
+              "backend/http": {{- include "backend_http.json" -}},
+              "modifier/martian": {
+                "header.Modifier": {
+                  "scope": ["request"],
+                  "name": "Context",
+                  "value": "{{- env "BACKEND_CONTEXT" -}}"
+                }
+              }
+            }
+          }
+        ]
+      }
+    {{- end -}}
+  {{- end -}}
+{{- end -}}

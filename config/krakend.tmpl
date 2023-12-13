@@ -9,6 +9,7 @@
   "endpoints": [
     {{ template "health" . }},
     {{ template "auth_generate" . }},
-    {{ template "endpoints" .domains }}
+    {{ template "default_endpoints" .default_domains }},
+    {{ template "custom_endpoints" .custom_domains }}
   ]
 }

@@ -1,0 +1,12 @@
+{
+  "sample": [
+    {
+      "endpoint": "dead_list",
+      "method": "GET",
+      "backend": {
+        "url_pattern": "dead_list",
+        "method": "GET"
+      }
+    }
+  ]
+}

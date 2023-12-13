@@ -1,0 +1,11 @@
+{{- define "method" -}}
+  {{- $get := list "add" "list" "detail/{id}" "dead_detail/{id}" "dead_list" -}}
+  {{- $post := list "bulk" -}}
+  {{- $patch := list "edit/{id}" -}}
+  {{- $delete := list "delete/{id}" -}}
+  {{- $route := . -}}
+  {{- if has $route $post -}}POST
+  {{- else if has $route $patch -}}PATCH
+  {{- else if has $route $delete -}}DELETE
+  {{- else -}}GET{{ end }}
+{{- end -}}
