@@ -1,0 +1,30 @@
+{{ define "auth_generate" }}
+  {
+    "endpoint": "/auth/generate",
+    "method": "POST",
+    "backend": [
+      {
+        "url_pattern": "/auth/generate",
+        "method": "POST",
+        "extra_config": {
+          "modifier/martian": {
+            "fifo.Group": {
+              "scope": ["request"],
+              "modifiers": [
+                {
+                  "body.Modifier": {
+                    "body": {{ template "auth_token" . }}
+                  },
+                  "header.Modifier": {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                  }
+                }
+              ]
+            }
+          }
+        }
+      }
+    ]
+  }
+{{ end }}

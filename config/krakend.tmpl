@@ -1,0 +1,14 @@
+{
+  "version": 3,
+  "name": "ala-gateway-krakend",
+  "port": 8080,
+  "timeout": "20s",
+  "debug_endpoint": false,
+  "host": ["{{ env "BACKEND_HOST" }}"],
+  "extra_config": {{ include "extra_config.json" }},
+  "endpoints": [
+    {{ template "health" . }},
+    {{ template "auth_generate" . }},
+    {{ template "endpoints" .domains }}
+  ]
+}

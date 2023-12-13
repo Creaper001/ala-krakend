@@ -1,0 +1,18 @@
+{{ define "health" }}
+  {
+    "endpoint": "/health",
+    "backend": [
+      {
+        "url_pattern": "/health"
+      }
+    ]
+  },
+  {
+    "endpoint": "/",
+    "backend": [
+      {
+        "url_pattern": "/"
+      }
+    ]
+  }
+{{ end }}

@@ -1,0 +1,13 @@
+version: "3"
+services:
+  krakend-ce:
+    build:
+      context: ./
+      dockerfile: ./docker/dev/Dockerfile
+    container_name: krakend-ce
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./config:/etc/krakend
+    env_file:
+      - .env

@@ -1,0 +1,12 @@
+{
+  "security/cors": {
+    "allow_origins": ["*"],
+    "allow_methods": ["*"],
+    "allow_headers": ["*"],
+    "expose_headers": ["Content-Length"],
+    "max_age": "12h"
+  },
+  "router": {
+    "return_error_msg": true
+  }
+}

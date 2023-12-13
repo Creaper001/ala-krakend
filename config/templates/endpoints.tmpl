@@ -1,0 +1,28 @@
+{{ define "endpoints" }}
+  {{ $domains := . }}
+  {{ range $domain, $routes := $domains }}
+    {{ range $idx, $route := $routes }}
+      {{ if $idx }},{{ end }}
+      {
+        "endpoint": "{{ $domain }}/{{ $route.endpoint }}",
+        "method": "{{ $route.method.endpoint }}",
+        "encondig": "json",
+        "backend": [
+          {
+            "url_pattern": "{{ $domain }}/{{ $route.endpoint }}",
+            "method": "{{ $route.method.backend }}",
+            "extra_config": {
+              "modifier/martian": {
+                "header.Modifier": {
+                  "scope": ["request"],
+                  "name": "Context",
+                  "value": "{{ env "BACKEND_CONTEXT" }}"
+                }
+              }
+            }
+          }
+        ]
+      }
+    {{ end }}
+  {{ end }}
+{{ end }}

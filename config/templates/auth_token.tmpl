@@ -1,0 +1,6 @@
+{{ define "auth_token" }}
+  {
+    "token": "{{ env "BACKEND_TOKEN" }}",
+    "secret": "{{ env "BACKEND_SECRET" }}"
+  }
+{{ end }}
