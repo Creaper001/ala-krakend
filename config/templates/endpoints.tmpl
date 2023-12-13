@@ -7,14 +7,13 @@
         "endpoint": "{{ $domain }}/{{ $route.endpoint }}",
         "method": "{{ $route.method }}",
         "encondig": "json",
+        "input_headers": {{ include "input_headers.json" }},
         "backend": [
           {
             "url_pattern": "{{ $domain }}/{{ $route.backend.url_pattern }}",
             "method": "{{ $route.backend.method }}",
             "extra_config": {
-              "backend/http": {
-                "return_error_code": true
-              },
+              "backend/http": {{ include "backend_http.json" }},
               "modifier/martian": {
                 "header.Modifier": {
                   "scope": ["request"],

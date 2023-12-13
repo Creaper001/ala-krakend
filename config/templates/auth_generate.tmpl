@@ -13,7 +13,7 @@
               "modifiers": [
                 {
                   "body.Modifier": {
-                    "body": "{{ include "auth_token.json" | b64enc }}"
+                    "body": "{{ toJson .auth_token | b64enc }}"
                   }
                 },
                 {
