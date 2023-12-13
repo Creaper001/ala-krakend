@@ -41,10 +41,10 @@
       }
     },
     {
-      "endpoint": "detail",
+      "endpoint": "detail/{id}",
       "method": "GET",
       "backend": {
-        "url_pattern": "detail",
+        "url_pattern": "detail/{id}",
         "method": "GET"
       }
     },
