@@ -2,9 +2,66 @@
   "sample": [
     {
       "endpoint": "add",
-      "method": {
-        "endpoint": "GET",
-        "backend": "POST"
+      "method": "POST",
+      "backend": {
+        "url_pattern": "add",
+        "method": "POST"
+      }
+    },
+    {
+      "endpoint": "bulk",
+      "method": "POST",
+      "backend": {
+        "url_pattern": "bulk",
+        "method": "POST"
+      }
+    },
+    {
+      "endpoint": "edit/{id}",
+      "method": "PATCH",
+      "backend": {
+        "url_pattern": "edit/{id}",
+        "method": "PATCH"
+      }
+    },
+    {
+      "endpoint": "delete/{id}",
+      "method": "DELETE",
+      "backend": {
+        "url_pattern": "delete/{id}",
+        "method": "DELETE"
+      }
+    },
+    {
+      "endpoint": "list",
+      "method": "GET",
+      "backend": {
+        "url_pattern": "list",
+        "method": "GET"
+      }
+    },
+    {
+      "endpoint": "detail",
+      "method": "GET",
+      "backend": {
+        "url_pattern": "detail",
+        "method": "GET"
+      }
+    },
+    {
+      "endpoint": "dead_detail/{id}",
+      "method": "GET",
+      "backend": {
+        "url_pattern": "dead_detail/{id}",
+        "method": "GET"
+      }
+    },
+    {
+      "endpoint": "dead_list",
+      "method": "GET",
+      "backend": {
+        "url_pattern": "dead_list",
+        "method": "GET"
       }
     }
   ]

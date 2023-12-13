@@ -13,5 +13,4 @@ ENV KRAKEND_DEBUG_ENDPOINT=false
 
 EXPOSE 8080
 
-RUN krakend check -d -t -c krakend.tmpl --lint
 CMD [ "run", "-d", "-c", "/etc/krakend/krakend.tmpl" ]

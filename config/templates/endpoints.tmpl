@@ -5,13 +5,16 @@
       {{ if $idx }},{{ end }}
       {
         "endpoint": "{{ $domain }}/{{ $route.endpoint }}",
-        "method": "{{ $route.method.endpoint }}",
+        "method": "{{ $route.method }}",
         "encondig": "json",
         "backend": [
           {
-            "url_pattern": "{{ $domain }}/{{ $route.endpoint }}",
-            "method": "{{ $route.method.backend }}",
+            "url_pattern": "{{ $domain }}/{{ $route.backend.url_pattern }}",
+            "method": "{{ $route.backend.method }}",
             "extra_config": {
+              "backend/http": {
+                "return_error_code": true
+              },
               "modifier/martian": {
                 "header.Modifier": {
                   "scope": ["request"],

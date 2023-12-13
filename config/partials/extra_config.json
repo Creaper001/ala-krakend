@@ -1,8 +1,14 @@
 {
   "security/cors": {
     "allow_origins": ["*"],
-    "allow_methods": ["*"],
-    "allow_headers": ["*"],
+    "allow_methods": ["POST", "GET"],
+    "allow_headers": [
+      "Context",
+      "Origin",
+      "Authorization",
+      "Content-Type",
+      "Content-Length"
+    ],
     "expose_headers": ["Content-Length"],
     "max_age": "12h"
   },

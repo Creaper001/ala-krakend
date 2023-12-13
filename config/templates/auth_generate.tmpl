@@ -13,8 +13,10 @@
               "modifiers": [
                 {
                   "body.Modifier": {
-                    "body": {{ template "auth_token" . }}
-                  },
+                    "body": "{{ include "auth_token.json" | b64enc }}"
+                  }
+                },
+                {
                   "header.Modifier": {
                     "name": "Content-Type",
                     "value": "application/json"
