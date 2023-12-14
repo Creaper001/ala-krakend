@@ -1,6 +1,5 @@
 {{ define "endpoints" }}
-  {{ $domains := . }}
-  {{ range $domain, $routes := $domains }}
+  {{ range $domain, $routes := . }}
     {{ range $idx, $route := $routes }}
       {{ if $idx }},{{ end }}
       {

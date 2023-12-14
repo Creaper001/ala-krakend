@@ -1,0 +1,6 @@
+{{- define "extra_config" -}}
+  {
+    "security/cors": {{ include "security_cors.json" }},
+    "router": {{ include "router.json" }}
+  }
+{{- end -}}

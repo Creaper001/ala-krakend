@@ -5,7 +5,7 @@
   "timeout": "20s",
   "debug_endpoint": false,
   "host": ["{{ env "BACKEND_HOST" }}"],
-  "extra_config": {{ include "extra_config.json" }},
+  "extra_config": {{ template "extra_config" }},
   "endpoints": [
     {{ template "health" . }},
     {{ template "auth_generate" . }},
