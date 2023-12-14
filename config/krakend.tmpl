@@ -4,11 +4,11 @@
   "port": 8080,
   "timeout": "20s",
   "debug_endpoint": false,
-  "host": ["{{ env "BACKEND_HOST" }}"],
-  "extra_config": {{ template "extra_config" }},
+  "host": ["{{- env "BACKEND_HOST" -}}"],
+  "extra_config": {{- template "extra_config" -}},
   "endpoints": [
-    {{ template "health" . }},
-    {{ template "auth_generate" . }},
-    {{ template "endpoints" .domains }}
+    {{- template "health" -}},
+    {{- template "auth_generate" .auth_token -}},
+    {{- template "endpoints" .domains -}}
   ]
 }

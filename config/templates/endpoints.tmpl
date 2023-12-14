@@ -1,28 +1,28 @@
-{{ define "endpoints" }}
-  {{ range $domain, $routes := . }}
-    {{ range $idx, $route := $routes }}
-      {{ if $idx }},{{ end }}
+{{- define "endpoints" -}}
+  {{- range $domain, $routes := . -}}
+    {{- range $idx, $route := $routes -}}
+      {{- if $idx -}},{{- end -}}
       {
-        "endpoint": "/{{ $domain }}/{{ $route.endpoint }}",
-        "method": "{{ $route.method }}",
-        "input_headers": {{ include "input_headers.json" }},
+        "endpoint": "/{{- $domain }}/{{- $route.endpoint -}}",
+        "method": "{{- $route.method }}",
+        "input_headers": {{- include "input_headers.json" -}},
         "backend": [
           {
-            "url_pattern": "{{ $domain }}/{{ $route.backend.url_pattern }}",
-            "method": "{{ $route.backend.method }}",
+            "url_pattern": "{{- $domain }}/{{- $route.backend.url_pattern -}}",
+            "method": "{{- $route.backend.method }}",
             "extra_config": {
-              "backend/http": {{ include "backend_http.json" }},
+              "backend/http": {{- include "backend_http.json" -}},
               "modifier/martian": {
                 "header.Modifier": {
                   "scope": ["request"],
                   "name": "Context",
-                  "value": "{{ env "BACKEND_CONTEXT" }}"
+                  "value": "{{- env "BACKEND_CONTEXT" -}}"
                 }
               }
             }
           }
         ]
       }
-    {{ end }}
-  {{ end }}
-{{ end }}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
